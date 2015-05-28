@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :games
+  resources :locations, only: [:new, :create]
+  resources :game_types, only: [:new, :create]
   root 'games#nextgame'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
