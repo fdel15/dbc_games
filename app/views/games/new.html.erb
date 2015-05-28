@@ -1,1 +1,25 @@
-new game form goes here
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@game) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, value: "Texas Holdem" %>
+
+      <%= f.label :type %>
+      <%= f.select :type, [["Cash"], ["Tournament"], ["Just For Fun"]] %>
+
+      <%= f.label :location %>
+      <%= f.text_field :location, value: "63 Wall St." %>
+
+      <%= f.label :buyin %>
+      <%= f.text_field :buyin, value: 10 %>
+
+      <div class="datetime">
+        <%= f.label :date %><br>
+        <%= f.date_select(:date, :order => [:month, :day, :year], start_year: 2015) %>
+      </div>
+
+      <%= f.submit "Create New Game", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
