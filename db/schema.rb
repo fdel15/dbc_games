@@ -11,19 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528140356) do
+ActiveRecord::Schema.define(version: 20150528195906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "games", force: :cascade do |t|
-    t.string   "name",       default: "Texas Holdem"
-    t.string   "type",       default: "Cash"
-    t.string   "location",   default: "63 Wall St."
-    t.integer  "buyin"
-    t.datetime "date"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+  create_table "game_types", force: :cascade do |t|
+    t.string   "name",             null: false
+    t.integer  "min_num_players",  null: false
+    t.string   "how_to_play_link", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
+
+  add_index "game_types", ["name"], name: "index_game_types_on_name", unique: true, using: :btree
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name",         null: false
+    t.integer  "game_type_id", null: false
+    t.integer  "location_id",  null: false
+    t.string   "description"
+    t.datetime "date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "address"
+    t.string   "city"
+    t.string   "zip_code"
+    t.string   "geo_coordinates"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "locations", ["address"], name: "index_locations_on_address", unique: true, using: :btree
 
 end

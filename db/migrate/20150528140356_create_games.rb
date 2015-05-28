@@ -1,10 +1,10 @@
 class CreateGames < ActiveRecord::Migration
   def change
     create_table :games do |t|
-      t.string :name, default: "Texas Holdem"
-      t.string :type, default: "Cash"
-      t.string :location, default: "63 Wall St."
-      t.integer :buyin
+      t.string :name, null: false
+      t.references :game_type, null: false
+      t.references :location, null: false
+      t.string :description
       t.datetime :date
       t.timestamps null: false
     end
