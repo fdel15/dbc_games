@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150528195906) do
     t.integer  "game_type_id", null: false
     t.integer  "location_id",  null: false
     t.string   "description"
-    t.datetime "date"
+    t.datetime "date",         null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

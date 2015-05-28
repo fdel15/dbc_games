@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration
       t.references :game_type, null: false
       t.references :location, null: false
       t.string :description
-      t.datetime :date
+      t.datetime :date, null: false
       t.timestamps null: false
     end
   end
