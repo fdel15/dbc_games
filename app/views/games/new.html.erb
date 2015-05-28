@@ -3,21 +3,22 @@
     <%= form_for(@game) do |f| %>
 
       <%= f.label :name %>
-      <%= f.text_field :name, value: "Texas Holdem" %>
+      <%= f.text_field :name %>
 
-      <%= f.label :type %>
-      <%= f.select :type, [["Cash"], ["Tournament"], ["Just For Fun"]] %>
+      <%= f.label :game_type_id, "Game Type" %>
+      <%= f.collection_select :game_type_id, @game_types, :id, :name %>
 
-      <%= f.label :location %>
-      <%= f.text_field :location, value: "63 Wall St." %>
-
-      <%= f.label :buyin %>
-      <%= f.text_field :buyin, value: 10 %>
+      <%= f.label :location_id, "Location " %>
+      <%= f.collection_select :location_id, @locations, :id, :address %>
 
       <div class="datetime">
         <%= f.label :date %><br>
-        <%= f.date_select(:date, :order => [:month, :day, :year], start_year: 2015) %>
+        <%= f.datetime_select(:date, order: [:month, :day, :year], prompt: true, ampm: true, start_year: 2015, minute_step: 15)%> <br>
+
       </div>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, value: "I am too lazy to write a description" %>
 
       <%= f.submit "Create New Game", class: "btn btn-primary" %>
     <% end %>
