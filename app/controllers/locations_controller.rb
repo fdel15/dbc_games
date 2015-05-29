@@ -8,8 +8,10 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     if @location.save
       flash[:success] = "Location Created!"
-    end
       redirect_to :new_game
+    else
+      render 'new'
+    end
   end
 
   private
