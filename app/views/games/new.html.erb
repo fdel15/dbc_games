@@ -9,7 +9,7 @@
       <%= f.collection_select :game_type_id, @game_types, :id, :name %>
 
       <%= f.label :location_id, "Location " %>
-      <%= f.collection_select :location_id, @locations, :id, :address %>
+      <%= f.collection_select :location_id, @locations, :id, :address_and_city %>
 
       <div class="datetime">
         <%= f.label :date %><br>
