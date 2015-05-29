@@ -9,7 +9,6 @@ class GameTypesController < ApplicationController
     if @game_type.save
       flash[:success] = "Game type created!"
     end
-    debugger
     redirect_to :new_game
   end
 
