@@ -8,8 +8,10 @@ class GameTypesController < ApplicationController
     @game_type = GameType.new(game_type_params)
     if @game_type.save
       flash[:success] = "Game type created!"
+      redirect_to :new_game
+    else
+      render 'new'
     end
-    redirect_to :new_game
   end
 
   private
