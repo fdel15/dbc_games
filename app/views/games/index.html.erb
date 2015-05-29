@@ -1,0 +1,7 @@
+<h3 class="page-header">Games<h3>
+
+  <% @games.each do |game| %>
+    <li><%= game.name %></li>
+    <li><%= game.game_type.name %></li>
+    <li><%= game.location.address_and_city %></li>
+  <% end %>
