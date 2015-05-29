@@ -16,3 +16,6 @@
   <li>City: <%= @location.city %></li>
   <li>Zipcode: <%= @location.zip_code %></li>
 </div>
+
+<%= content_tag "div", id: "map-canvas", data: { longitude: @location.longitude, latitude: @location.latitude } do %>
+<% end %>
