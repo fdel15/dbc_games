@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  belongs_to :game
+  has_many :games
 
   def address_and_city
     "#{address}, #{city}"

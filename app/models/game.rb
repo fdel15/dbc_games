@@ -1,4 +1,4 @@
 class Game < ActiveRecord::Base
-  has_many :game_types
-  has_many :locations
+  belongs_to :game_type
+  belongs_to :location
 end
