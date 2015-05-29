@@ -14,6 +14,13 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  def show
+    @game = Game.find(params[:id])
+    @location = @game.location
+    @game_type = @game.game_type
+
+  end
+
   def new
     @game = Game.new()
     @locations = Location.all
