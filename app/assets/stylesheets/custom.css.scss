@@ -71,6 +71,12 @@ p {
   line-height: 1.7em;
 }
 
+.page-header {
+  text-align: center;
+  margin: 15px;
+  border: none;
+}
+
 /* header */
 
 #logo {
@@ -97,12 +103,20 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+label {
+  width: 100%;
+}
+
 input {
   height: auto !important;
 }
 
 .datetime > select {
   width: 17%;
+}
+
+.form-helper > select {
+  width: 70%;
 }
 
 label user_name {
