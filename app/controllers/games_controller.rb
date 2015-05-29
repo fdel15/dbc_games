@@ -33,6 +33,8 @@ class GamesController < ApplicationController
       flash[:success] = "Game created!"
       redirect_to :games
     else
+      @game_types = GameType.all
+      @locations = Location.all
       render 'new'
     end
   end

@@ -111,10 +111,17 @@ input {
   height: auto !important;
 }
 
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
 .datetime > select {
   width: 17%;
 }
-
 .form-helper > select {
   width: 70%;
 }
@@ -122,6 +129,19 @@ input {
 label user_name {
   color: red;
 }
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+  select {
+    width: 17%;
+  }
+}
+
+
+
 
 
 
