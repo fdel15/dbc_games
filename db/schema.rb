@@ -39,13 +39,11 @@ ActiveRecord::Schema.define(version: 20150529173421) do
   create_table "locations", force: :cascade do |t|
     t.string   "address"
     t.string   "city"
-    t.string   "zip_code"
+    t.string   "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float    "longitude"
     t.float    "latitude"
   end
-
-  add_index "locations", ["address"], name: "index_locations_on_address", unique: true, using: :btree
 
 end
