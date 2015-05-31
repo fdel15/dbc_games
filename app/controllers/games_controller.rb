@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   def nextgame
     @game = Game.last
     if @game.nil?
-      flash[:alert] = "There are currently no scheduled games. Set one up!"
+      flash[:danger] = "There are currently no scheduled games. Set one up!"
       redirect_to :new_game
     else
       redirect_to @game
