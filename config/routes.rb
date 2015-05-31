@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :games
   resources :locations, only: [:new, :create]
   resources :game_types, only: [:new, :create]
