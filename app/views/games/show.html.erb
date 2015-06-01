@@ -5,6 +5,8 @@
   <li>Description: <%= @game.description %></li>
 </div>
 
+<%= link_to "Join Game", join_path, class: "btn btn-primary" %>
+
 <div class="gametype-info">
   <li>Name: <%= @game_type.name %></li>
   <li>Number of Players Needed: <%= @game_type.min_num_players %></li>
@@ -18,4 +20,9 @@
 </div>
 
 <%= content_tag "div", id: "map-canvas", data: { longitude: @location.longitude, latitude: @location.latitude } do %>
+<% end %>
+
+<h3>Currently Playing:</h3>
+<% @game.users.each do |user| %>
+  <li><%= user.name %></li>
 <% end %>
