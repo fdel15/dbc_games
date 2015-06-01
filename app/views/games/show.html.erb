@@ -1,28 +1,28 @@
 <div class="game-info">
   <li>Name: <%= @game.name %></li>
-  <li>Type: <%= @game_type.name %></li>
+  <li>Type: <%= @game.game_type.name %></li>
   <li>Date: <%= @game.date %></li>
   <li>Description: <%= @game.description %></li>
 </div>
 
-<%= link_to "Join Game", join_path, class: "btn btn-primary" %>
+<%= link_to "Join Game", join_path, class: "btn btn-primary", 'data-no-turbolink' => true %>
 
 <div class="gametype-info">
-  <li>Name: <%= @game_type.name %></li>
-  <li>Number of Players Needed: <%= @game_type.min_num_players %></li>
-  <li>How To Play: <%= @game_type.how_to_play_link %></li>
+  <li>Name: <%= @game.game_type.name %></li>
+  <li>Number of Players Needed: <%= @game.game_type.min_num_players %></li>
+  <li>How To Play: <%= @game.game_type.how_to_play_link %></li>
 </div>
 
 <div class="location-info">
-  <li>Address: <%= @location.address %></li>
-  <li>City: <%= @location.city %></li>
-  <li>Zipcode: <%= @location.zipcode %></li>
+  <li>Address: <%= @game.location.address %></li>
+  <li>City: <%= @game.location.city %></li>
+  <li>Zipcode: <%= @game.location.zipcode %></li>
 </div>
 
-<%= content_tag "div", id: "map-canvas", data: { longitude: @location.longitude, latitude: @location.latitude } do %>
+<%= content_tag "div", id: "map-canvas", data: { longitude: @game.location.longitude, latitude: @game.location.latitude } do %>
 <% end %>
 
 <h3>Currently Playing:</h3>
 <% @game.users.each do |user| %>
-  <li><%= user.name %></li>
+  <li><%= image_tag "#{user.gravatar_url}" %></li>
 <% end %>
