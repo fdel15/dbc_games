@@ -40,7 +40,7 @@ class GamesController < ApplicationController
   def join
     @game = Game.find(params[:id])
     @game.games_users.create(user_id: current_user.id)
-    flash[:success] = "You have successfully joined #{@game.name}! See you there :)"
+    flash.now[:success] = "You have successfully joined #{@game.name}! See you there :)"
     render :show
 
   end

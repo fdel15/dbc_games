@@ -3,7 +3,7 @@
     <%= link_to "DBC Games", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%=link_to "Next Game", root_path %></li>
+        <li><%=link_to "Next Game", root_path, 'data-no-turbolink' => true %></li>
           <li><%= link_to "DBC Alumni", root_path %></li>
           <% if user_signed_in? %>
             <li class="dropdown">
