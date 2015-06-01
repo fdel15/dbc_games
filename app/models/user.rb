@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :games_users
   has_many :games, through: :games_users
+
+  after_create :set_gravatar_url
+
+  def set_gravatar_url
+    gravatar_id = Digest::MD5::hexdigest(email.downcase)
+    self.gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{50}"
+    self.save
+  end
 end
