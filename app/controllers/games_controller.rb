@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:nextgame, :show]
 
   def nextgame
     @game = Game.last
@@ -16,9 +17,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @location = @game.location
-    @game_type = @game.game_type
-
   end
 
   def new
@@ -31,7 +29,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     if @game.save
       flash[:success] = "Game created!"
-      redirect_to :games
+      redirect_to @game
     else
       @game_types = GameType.all
       @locations = Location.all
@@ -43,7 +41,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @game.games_users.create(user_id: current_user.id)
     flash[:success] = "You have successfully joined #{@game.name}! See you there :)"
-    redirect_to @game
+    render :show
 
   end
 
