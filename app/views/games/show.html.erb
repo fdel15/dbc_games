@@ -18,7 +18,7 @@
           <li><h3 class="game-header">THE PLAYERS</h3></li>
           <% @game.users.each do |user| %>
             <li>
-              <%= image_tag "#{user.gravatar_url}" %>
+              <%= image_tag "#{user.gravatar_img}" %>
              <%= user.username %>
             </li>
           <% end %>
