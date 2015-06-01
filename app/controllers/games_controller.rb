@@ -39,6 +39,14 @@ class GamesController < ApplicationController
     end
   end
 
+  def join
+    @game = Game.find(params[:id])
+    @game.games_users.create(user_id: current_user.id)
+    flash[:success] = "You have successfully joined #{@game.name}! See you there :)"
+    redirect_to @game
+
+  end
+
   private
 
   def game_params
