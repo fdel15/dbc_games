@@ -9,6 +9,10 @@ class Location < ActiveRecord::Base
     "#{address}, #{city}"
   end
 
+  def full_address
+    "#{address} #{city} #{zipcode}"
+  end
+
   def address_and_zip_code
     "#{address}, #{zipcode}"
   end
