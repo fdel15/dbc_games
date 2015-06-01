@@ -1,28 +1,45 @@
-<div class="game-info">
-  <li>Name: <%= @game.name %></li>
-  <li>Type: <%= @game.game_type.name %></li>
-  <li>Date: <%= @game.date %></li>
-  <li>Description: <%= @game.description %></li>
+        <h2 id="game_name_header"><%= @game.name %></h2>
+        <%= link_to "Join Game", "/games/#{@game.id}/join", class: "btn btn-primary join", 'data-no-turbolink' => true %>
+<div class="row">
+  <div class="game-info">
+    <div class="col-md-5 col-md-offset-1">
+      <ul class="dynamic-data">
+        <li><h3 class="game-header">THE GAME</h3></li>
+        <li><%= @game.game_type.name %></li>
+        <li><%= @game.formatted_date %></li>
+        <li><%= @game.formatted_time %></li>
+        <li><%= @game.location.full_address %></li>
+        <li><%= link_to "How To Play", "#{@game.game_type.how_to_play_link}", target: :_blank %></li>
+      </ul>
+    </div>
+    <div class="col-md-5">
+      <div class="player-list">
+        <ul class="dynamic-data">
+          <li><h3 class="game-header">THE PLAYERS</h3></li>
+          <% @game.users.each do |user| %>
+            <li>
+              <%= image_tag "#{user.gravatar_url}" %>
+             <%= user.username %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to "Join Game", "/games/#{@game.id}/join", class: "btn btn-primary", 'data-no-turbolink' => true %>
-
-<div class="gametype-info">
-  <li>Name: <%= @game.game_type.name %></li>
-  <li>Number of Players Needed: <%= @game.game_type.min_num_players %></li>
-  <li>How To Play: <%= @game.game_type.how_to_play_link %></li>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="game-description">
+      <p><%= @game.description %></p>
+    </div>
+  </div>
 </div>
 
-<div class="location-info">
-  <li>Address: <%= @game.location.address %></li>
-  <li>City: <%= @game.location.city %></li>
-  <li>Zipcode: <%= @game.location.zipcode %></li>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= content_tag "div", id: "map-canvas", data: { longitude: @game.location.longitude, latitude: @game.location.latitude } do %>
+    <% end %>
+  </div>
 </div>
 
-<%= content_tag "div", id: "map-canvas", data: { longitude: @game.location.longitude, latitude: @game.location.latitude } do %>
-<% end %>
-
-<h3>Currently Playing:</h3>
-<% @game.users.each do |user| %>
-  <li><%= image_tag "#{user.gravatar_url}" %></li>
-<% end %>
