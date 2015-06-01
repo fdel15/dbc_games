@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
 
   after_create :set_gravatar_url
 
-  def set_gravatar_url
+  def gravatar_img(size = 80)
     gravatar_id = Digest::MD5::hexdigest(email.downcase)
-    self.gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{50}"
-    self.save
+    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
   end
+
 end
