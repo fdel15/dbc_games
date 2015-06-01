@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :games
   resources :locations, only: [:new, :create]
+  resources :users
   resources :game_types, only: [:new, :create]
   get 'games/:id/join' => "games#join", as: "join"
   # The priority is based upon order of creation: first created -> highest priority.
