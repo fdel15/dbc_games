@@ -7,7 +7,7 @@ class GamesController < ApplicationController
       flash[:danger] = "There are currently no scheduled games. Set one up!"
       redirect_to :new_game
     else
-      redirect_to @game
+      render :show
     end
   end
 
