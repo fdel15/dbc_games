@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save
-      flash[:success] = "Profile Updated!"
+      flash.now[:success] = "Profile Updated!"
       render :show
     else
       render :edit
