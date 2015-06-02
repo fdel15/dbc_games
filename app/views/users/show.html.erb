@@ -3,7 +3,8 @@
     <div class="col-md-3 col-md-offset-1 profile-left">
       <%= image_tag @user.gravatar_img(200) %>
       <% if @user == current_user %>
-      <%= link_to "Edit Profile", "#", class: "btn btn-primary" %>
+        <%= link_to "Edit Profile", "#", class: "btn btn-primary" %>
+        <%= link_to "Change Email/Password", edit_user_registration_path, class: "btn btn-primary" %>
       <% end %>
     </div>
     <div class="profile-right">
