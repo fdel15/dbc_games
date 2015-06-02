@@ -189,7 +189,53 @@ label user_name {
        height: 400px;
      }
 
+// Profile
 
+.user-info {
+  // * {
+  //   border: 1px red solid;
+  // }
+  margin-top: 5%;
+  li {
+    list-style: none;
+  }
+  .profile-left {
+    margin-left: 10%;
+    a {
+      margin-top: 5px;
+      width: 200px;
+    }
+  }
+  .profile-right {
+    .row {
+      // border: solid 1px black;
+      padding: 15px 0;
+    }
+    li {
+        width: 50%;
+        // border: 2px blue solid;
+        display: inline-block;
+        font-size: 1.25em;
+        font-weight: bold;
+      }
+    .info {
+      font-weight: normal;
+    }
+  }
+}
+
+.user-game-history {
+  margin-top: 35px;
+  li {
+    display: inline-block;
+    width: 22%;
+    padding: 10px;
+    font-size: 18px;
+  }
+  .each-game {
+    // border: solid black 1px;
+  }
+}
 
 
 

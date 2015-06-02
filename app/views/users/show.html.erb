@@ -1,11 +1,59 @@
-<div class="user-info">
-  <%= image_tag @user.gravatar_url %>
-  <li><%= @user.username %></li>
-  <li><%= @user.email %></li>
-  <li><%= @user.username %></li>
-  <li><%= @user.cohort %></li>
-  <li>Currentl working at: </li>
-  <li>Job Title: </li>
-  <li>Quirk</li>
-  <li>Tweet size piece of advice</li>
+<div class="row">
+  <div class="user-info">
+    <div class="col-md-3 col-md-offset-1 profile-left">
+      <%= image_tag @user.gravatar_img(200) %>
+      <% if @user == current_user %>
+      <%= link_to "Edit Profile", "#", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="profile-right">
+      <div class="col-md-6">
+      <div class="row">
+        <li class="col-md-2 titles">Name: </li>
+        <li class="col-md-4 info"><%= @user.username %>
+        </li>
+      </div>
+        <div class="row">
+          <li class="col-md-2 titles">Email: </li>
+          <li class="col-md-4 info"><%= @user.email %></li>
+        </div>
+        <div class="row">
+          <li class="col-md-2">Cohort: </li>
+          <li class="col-md-4 info">Rockdoves</li>
+        </div>
+        <div class="row">
+          <li class="col-md-2">Currently working at: </li>
+          <li class="col-md-4 info">Still looking</li>
+        </div>
+        <div class="row">
+          <li class="col-md-2">Job Title: </li>
+          <li class="col-md-4 info">None</li>
+        </div>
+        <div class="row">
+          <li class="col-md-2">Quirk: </li>
+          <li class="col-md-4 info">I don't update my profile</li>
+        </div>
+        <div class="row">
+          <li class="col-md-2">Tweet size piece of advice: </li>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="user-game-history">
+  <div class="row">
+    <div class="col-md-9 col-md-offset-2">
+      <h3 style="text-align: center;">Game History</h3>
+      <% @user.games.each do |game| %>
+        <div class="row each-game">
+          <li><%= link_to "#{game.name}", game_path(game), 'data-no-turbolink' => true %></li>
+          <li><%= game.formatted_date %></li>
+          <li><%= game.game_type.name %></li>
+          <li><%= game.location.full_address %></li>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
