@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'games#nextgame'
   delete 'games/unjoin' => "games#unjoin", as: "unjoin"
-  get 'games/:id/join' => "games#join", as: "join"
+  post 'games/join' => "games#join", as: "join"
   devise_for :users
   resources :games
   resources :locations, only: [:new, :create]
