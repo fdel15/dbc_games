@@ -47,6 +47,7 @@ class GamesController < ApplicationController
 
   def unjoin
     @game = Game.find(params[:id])
+    flash[:danger] = "You have unjoined #{@game.name}"
     @game.users.destroy(current_user.id)
     redirect_to @game
   end
