@@ -1,5 +1,9 @@
-        <h2 id="game_name_header"><%= @game.name %></h2>
-        <%= link_to "Join Game", "/games/#{@game.id}/join", class: "btn btn-primary join", 'data-no-turbolink' => true %>
+<h2 id="game_name_header"><%= @game.name %></h2>
+<% if @game.users.include?(current_user) %>
+  <%= link_to "Unjoin Game", unjoin_path(:id => @game.id), method: "delete", class: "btn btn-primary join", 'data-no-turbolink' => true %>
+<% else %>
+  <%= link_to "Join Game", "/games/#{@game.id}/join", class: "btn btn-primary join", 'data-no-turbolink' => true %>
+<% end %>
 <div class="row">
   <div class="game-info">
     <div class="col-md-5 col-md-offset-1">
