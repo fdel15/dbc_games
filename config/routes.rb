@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   root 'games#nextgame'
+  delete 'games/unjoin' => "games#unjoin", as: "unjoin"
+  get 'games/:id/join' => "games#join", as: "join"
   devise_for :users
   resources :games
   resources :locations, only: [:new, :create]
   resources :users
   resources :game_types, only: [:new, :create]
-  get 'games/:id/join' => "games#join", as: "join"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
