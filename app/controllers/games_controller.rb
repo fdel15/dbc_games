@@ -45,6 +45,12 @@ class GamesController < ApplicationController
 
   end
 
+  def unjoin
+    @game = Game.find(params[:id])
+    @game.users.destroy(current_user.id)
+    redirect_to @game
+  end
+
   private
 
   def game_params
