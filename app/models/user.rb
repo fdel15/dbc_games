@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   has_many :games_users
   has_many :games, through: :games_users
 
-  after_create :set_gravatar_url
-
   def gravatar_img(size = 80)
     gravatar_id = Digest::MD5::hexdigest(email.downcase)
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
