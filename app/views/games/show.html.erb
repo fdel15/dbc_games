@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js' %>
+<% end %>
+
+<script>google.maps.event.addDomListener(window, 'load', initialize);</script>
+
 <h2 id="game_name_header"><%= @game.name %></h2>
 <% if @game.users.include?(current_user) %>
   <%= link_to "Unjoin Game", unjoin_path(:id => @game.id), method: "delete", class: "btn btn-primary join", 'data-no-turbolink' => true %>
