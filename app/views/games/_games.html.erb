@@ -1,0 +1,14 @@
+ <div class="row">
+        <li>Game</li>
+        <li>Date</li>
+        <li>Type</li>
+        <li>Location</li>
+      </div>
+      <% games.each do |game| %>
+        <div class="row each-game">
+          <li><%= link_to "#{game.name}", game_path(game), 'data-no-turbolink' => true %></li>
+          <li><%= game.formatted_date %></li>
+          <li><%= game.game_type.name %></li>
+          <li><%= game.location.full_address %></li>
+        </div>
+      <% end %>
