@@ -1,0 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js' %>
+<script>google.maps.event.addDomListener(window, 'load', initialize);</script>
+<% end %>
+
+ <%= content_tag "div", id: "map-canvas", data: { longitude: game.location.longitude, latitude: game.location.latitude } do %>
+ <% end %>
